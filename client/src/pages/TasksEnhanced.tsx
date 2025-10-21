@@ -179,7 +179,7 @@ const TasksEnhanced: React.FC = () => {
     setSelectedTask(null);
   };
 
-  const handleUpdateTask = async (taskId: number, updates: Partial<Task>) => {
+  // const handleUpdateTask = async (taskId: number, updates: Partial<Task>) => {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch(`http://localhost:3001/api/tasks/${taskId}`, {
