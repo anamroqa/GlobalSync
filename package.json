@@ -1,0 +1,26 @@
+{
+  "name": "globalsync",
+  "version": "2.0.0",
+  "description": "GlobalSync Team Management Platform",
+  "main": "server/src/server-enhanced.js",
+  "scripts": {
+    "start": "node server/src/server-enhanced.js",
+    "server": "node server/src/server-enhanced.js",
+    "build": "cd client && npm install && npm run build",
+    "postinstall": "cd client && npm install"
+  },
+  "keywords": ["team", "management", "tasks", "collaboration"],
+  "author": "GlobalSync Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
