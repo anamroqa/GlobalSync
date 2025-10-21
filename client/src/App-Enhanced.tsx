@@ -11,13 +11,22 @@ import './App.css';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [user, setUser] = React.useState<any>(null);
 
   React.useEffect(() => {
     const token = localStorage.getItem('token');
+    const userData = localStorage.getItem('user');
     setIsAuthenticated(!!token);
+    if (userData) {
+      setUser(JSON.parse(userData));
+    }
   }, []);
 
   const handleLogin = () => {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      setUser(JSON.parse(userData));
+    }
     setIsAuthenticated(true);
   };
 
@@ -25,6 +34,7 @@ function App() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     setIsAuthenticated(false);
+    setUser(null);
   };
 
   if (!isAuthenticated) {
@@ -34,13 +44,13 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Navigation onLogout={handleLogout} />
+        <Navigation user={user} onLogout={handleLogout} />
         <div className="app-content">
           <Routes>
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<DashboardEnhanced />} />
             <Route path="/tasks" element={<TasksEnhanced />} />
-            <Route path="/team" element={<Team />} />
+            <Route path="/team" element={<Team user={user} onLogout={handleLogout} />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="*" element={<Navigate to="/dashboard" replace />} />
@@ -52,4 +62,3 @@ function App() {
 }
 
 export default App;
-
