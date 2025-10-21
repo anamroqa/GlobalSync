@@ -70,7 +70,7 @@ function Dashboard({ user, onLogout }: DashboardProps) {
   const totalTasks = Object.values(stats?.tasksByStatus || {}).reduce((a, b) => a + b, 0);
   const completedTasks = stats?.tasksByStatus?.completed || 0;
   const inProgressTasks = stats?.tasksByStatus?.in_progress || 0;
-  const notStartedTasks = stats?.tasksByStatus?.not_started || 0;
+  // const notStartedTasks = stats?.tasksByStatus?.not_started || 0;
 
   return (
     <div>
